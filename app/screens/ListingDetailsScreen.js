@@ -14,7 +14,7 @@ const ListingDetailsScreen = () => {
                 <AppText style={styles.price}>$100</AppText>
                 <View style={styles.userContainer}>
                     <ListItem
-                        image={require("../assets/Sani.jpg")}
+                        image={require("../assets/sani3.png")}
                         // image='../assets/Sani.jpg'
                         title="Sani Mridha"
                         subTitle="5 Listings"
