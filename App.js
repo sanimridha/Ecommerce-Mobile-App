@@ -67,7 +67,9 @@ export default function App() {
      //           />
      //     </View>
      //<ListingDetailsScreen/>
-     <MessagesScreen/>
+     // <MessagesScreen/>
+     <ListingDetailsScreen/>
+     //<ViewImageScreen/>
     );
 }
 
