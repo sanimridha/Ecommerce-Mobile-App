@@ -21,17 +21,18 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     image:{
-        width:70,
-        height:70,
-        borderRadius:35,
+        width:50,
+        height:50,
+        borderRadius:25,
         marginRight:10,
     },
     title:{
         fontWeight:"500",
+        fontSize:16,
     },
     subTitle:{
         color:colors.medium,
-        fontSize:18,
+        fontSize:14,
     }
 })
 
