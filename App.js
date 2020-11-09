@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/components/AppText'
 import{MaterialIcons} from '@expo/vector-icons'
 import AppButton from './app/components/AppButton';
+import Card from './app/components/Card'
 
 
 export default function App() {
@@ -34,7 +35,34 @@ export default function App() {
     //        <AppButton title="LogIn" onPress={()=> console.log("tapped!")}/>
 
     //    </View>
-         <WelcomeScreen/>
+         //<WelcomeScreen/>
+         <View style={{
+              backgroundColor:"#f8f4f4",
+              padding:20,
+              paddingTop:80,
+
+         }}>
+              <Card
+                    title="Red Jacket for Sale"
+                    subTitle="$100"
+                    image={require("./app/assets/jacket.jpg")}
+               />
+               <Card
+                    title="Red Jacket for Sale"
+                    subTitle="$100"
+                    image={require("./app/assets/couch.jpg")}
+               />
+               <Card
+                    title="Red Jacket for Sale"
+                    subTitle="$100"
+                    image={require("./app/assets/jacket.jpg")}
+               />
+               <Card
+                    title="Red Jacket for Sale"
+                    subTitle="$100"
+                    image={require("./app/assets/couch.jpg")}
+               />
+         </View>
     );
 }
 
