@@ -8,6 +8,7 @@ import{MaterialIcons} from '@expo/vector-icons'
 import AppButton from './app/components/AppButton';
 import Card from './app/components/Card'
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import MessagesScreen from './app/screens/MessagesScreen';
 
 
 export default function App() {
@@ -65,8 +66,8 @@ export default function App() {
      //                image={require("./app/assets/couch.jpg")}
      //           />
      //     </View>
-     <ListingDetailsScreen/>
-     //<ViewImageScreen/>
+     //<ListingDetailsScreen/>
+     <MessagesScreen/>
     );
 }
 
