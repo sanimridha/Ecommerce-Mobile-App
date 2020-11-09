@@ -7,6 +7,7 @@ import AppText from './app/components/AppText'
 import{MaterialIcons} from '@expo/vector-icons'
 import AppButton from './app/components/AppButton';
 import Card from './app/components/Card'
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 
 
 export default function App() {
@@ -36,33 +37,35 @@ export default function App() {
 
     //    </View>
          //<WelcomeScreen/>
-         <View style={{
-              backgroundColor:"#f8f4f4",
-              padding:20,
-              paddingTop:80,
+                                   //Card Component
+     //     <View style={{
+     //          backgroundColor:"#f8f4f4",
+     //          padding:20,
+     //          paddingTop:80,
 
-         }}>
-              <Card
-                    title="Red Jacket for Sale"
-                    subTitle="$100"
-                    image={require("./app/assets/jacket.jpg")}
-               />
-               <Card
-                    title="Red Jacket for Sale"
-                    subTitle="$100"
-                    image={require("./app/assets/couch.jpg")}
-               />
-               <Card
-                    title="Red Jacket for Sale"
-                    subTitle="$100"
-                    image={require("./app/assets/jacket.jpg")}
-               />
-               <Card
-                    title="Red Jacket for Sale"
-                    subTitle="$100"
-                    image={require("./app/assets/couch.jpg")}
-               />
-         </View>
+     //     }}>
+     //          <Card
+     //                title="Red Jacket for Sale"
+     //                subTitle="$100"
+     //                image={require("./app/assets/jacket.jpg")}
+     //           />
+     //           <Card
+     //                title="Red Jacket for Sale"
+     //                subTitle="$100"
+     //                image={require("./app/assets/couch.jpg")}
+     //           />
+     //           <Card
+     //                title="Red Jacket for Sale"
+     //                subTitle="$100"
+     //                image={require("./app/assets/jacket.jpg")}
+     //           />
+     //           <Card
+     //                title="Red Jacket for Sale"
+     //                subTitle="$100"
+     //                image={require("./app/assets/couch.jpg")}
+     //           />
+     //     </View>
+     <ListingDetailsScreen/>
     );
 }
 
