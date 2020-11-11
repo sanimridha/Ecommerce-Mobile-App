@@ -3,6 +3,8 @@ import { FlatList, SafeAreaView, StyleSheet, Text, View, Platform, StatusBar } f
 import ListItem from '../components/ListItem'
 import Constants from 'expo-constants'
 import Screen from '../components/Screen'
+import ListItemSeparetor from '../components/ListItemSeparetor'
+import ListItemDeleteAction from '../components/ListItemDeleteAction'
 
 const messages=[
     {
@@ -35,7 +37,14 @@ const MessagesScreen = () => {
                 title ={item.title}
                 subTitle={item.description}
                 image={item.image}
+                onPress = {()=>console.log("message deleverd!", item)}
+                renderRightActions={()=>
+                    <ListItemDeleteAction onPress={()=>console.log(item)}/>}
+
+
             />}
+            ItemSeparatorComponent = {ListItemSeparetor}
+
         />
         </Screen>
     )
