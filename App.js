@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/components/AppText'
@@ -14,11 +14,12 @@ import Icon from './app/components/Icon'
 import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
+import AppTextInput from './app/components/AppTextInput';
 
 
 export default function App() {
-
-   return(
+    const [firstName, setFirstName] = useState("");
+    return(
     //    <View style={{
     //        flex:1,
     //        justifyContent:"center",
@@ -78,7 +79,16 @@ export default function App() {
     // <Screen>
     //    <AccountScreen/>
     // </Screen>
-    <ListingsScreen/>
+    // <ListingsScreen/>
+    <Screen>
+        {/* <Text>{firstName}</Text>
+
+        <TextInput keyboardType="numeric" onChangeText={(text) => setFirstName(text)} placeholder="First Name" style={{
+            borderBottomColor:"#ccc",
+            borderBottomWidth:1,
+        }}/> */}
+        <AppTextInput placeholder="Username" icon="email"/>
+    </Screen>
 
     );
 }
