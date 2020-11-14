@@ -11,6 +11,7 @@ import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Screen from './app/components/Screen'
 import Icon from './app/components/Icon'
+import ListItem from './app/components/ListItem';
 
 
 export default function App() {
@@ -73,12 +74,7 @@ export default function App() {
      //<ListingDetailsScreen/>
      //<ViewImageScreen/>
     <Screen>
-        <Icon
-        name='email'
-        size={50}
-        backgroundColor='red'
-        iconColor='white'
-        />
+        <ListItem title="My Title"  ImageComponent={<Icon name='email' />}/>
     </Screen>
 
     );
