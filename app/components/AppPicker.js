@@ -1,13 +1,18 @@
-import React from 'react'
-import { Platform, StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
+import { Button, Modal, Platform, StyleSheet, Text, TextInput, View } from 'react-native'
 
 import {MaterialCommunityIcons} from "@expo/vector-icons"
 import colors from '../config/colors'
 import defaultStyles from '../config/styles'
 import AppText from './AppText'
+import Screen from './Screen'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const AppPicker = ({icon,placeholder, ...otherPros}) => {
+    const [modalVisible, setModalVisible] = useState(false)
     return (
+        <React.Fragment>
+        <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
            { icon && <MaterialCommunityIcons name={icon}size={25} style={styles.icons}/>}
             <AppText styles={styles.text}>{placeholder}</AppText>
@@ -15,6 +20,14 @@ const AppPicker = ({icon,placeholder, ...otherPros}) => {
             <MaterialCommunityIcons name="chevron-down" size={25} />
             </View>
         </View>
+        </TouchableWithoutFeedback>
+        <Modal visible={modalVisible} animationType="slide">
+            <Screen>
+                <Button title="Close" onPress={() => setModalVisible(false)}/>
+            </Screen>
+
+        </Modal>
+        </React.Fragment>
 
     )
 }
