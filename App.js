@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput, Switch } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Switch, Button } from 'react-native';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/components/AppText'
@@ -17,10 +17,23 @@ import ListingsScreen from './app/screens/ListingsScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 
-
+const categories = [
+    {
+        label:"furniture",
+        value:1,
+    },
+    {
+        label:"Clothing",
+        value:2,
+    },
+    {
+        label:"Cameras",
+        value:3,
+    },
+]
 export default function App() {
-    const [firstName, setFirstName] = useState("");
-    const [isNew, setIsNew] = useState(false);
+    // const [firstName, setFirstName] = useState("");
+    // const [isNew, setIsNew] = useState(false);
     return(
     //    <View style={{
     //        flex:1,
@@ -94,7 +107,7 @@ export default function App() {
 //     <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)}/>
 // </Screen>
     <Screen>
-        <AppPicker icon="apps" placeholder="category"/>
+        <AppPicker items={categories} icon="apps" placeholder="category"/>
         <AppTextInput icon="email" placeholder="Email"/>
     </Screen>
 

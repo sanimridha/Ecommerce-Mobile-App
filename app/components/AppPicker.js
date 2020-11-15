@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { Button, Modal, Platform, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, FlatList, Modal, Platform, StyleSheet, Text, TextInput, View } from 'react-native'
 
 import {MaterialCommunityIcons} from "@expo/vector-icons"
 import colors from '../config/colors'
 import defaultStyles from '../config/styles'
 import AppText from './AppText'
 import Screen from './Screen'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { TouchableWithoutFeedback } from 'react-native'
+import PickerItem from './PickerItem'
 
-const AppPicker = ({icon,placeholder, ...otherPros}) => {
+const AppPicker = ({icon, items, placeholder, ...otherPros}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <React.Fragment>
@@ -16,7 +17,7 @@ const AppPicker = ({icon,placeholder, ...otherPros}) => {
         <View style={styles.container}>
            { icon && <MaterialCommunityIcons name={icon}size={25} style={styles.icons}/>}
             <AppText styles={styles.text}>{placeholder}</AppText>
-            <View style={{marginLeft:230}}>
+            <View >
             <MaterialCommunityIcons name="chevron-down" size={25} />
             </View>
         </View>
@@ -24,8 +25,14 @@ const AppPicker = ({icon,placeholder, ...otherPros}) => {
         <Modal visible={modalVisible} animationType="slide">
             <Screen>
                 <Button title="Close" onPress={() => setModalVisible(false)}/>
-            </Screen>
+                <FlatList
+                    data={items}
+                    keyExtractor={item => item.value.toString()}
+                    renderItem={({item}) =>
+                    <PickerItem label={item.label} onPress= {() => console.log(item)}/> }
 
+                />
+            </Screen>
         </Modal>
         </React.Fragment>
 
@@ -47,9 +54,6 @@ const styles = StyleSheet.create({
     text:{
         flex:1,
     },
-    arrow:{
-
-    }
 })
 
 export default AppPicker
