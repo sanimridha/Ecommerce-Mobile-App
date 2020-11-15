@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Switch } from 'react-native';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/components/AppText'
@@ -15,10 +15,12 @@ import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
 import AppTextInput from './app/components/AppTextInput';
+import AppPicker from './app/components/AppPicker';
 
 
 export default function App() {
     const [firstName, setFirstName] = useState("");
+    const [isNew, setIsNew] = useState(false);
     return(
     //    <View style={{
     //        flex:1,
@@ -80,14 +82,20 @@ export default function App() {
     //    <AccountScreen/>
     // </Screen>
     // <ListingsScreen/>
-    <Screen>
-        {/* <Text>{firstName}</Text>
+    // <Screen>
+    //     <Text>{firstName}</Text>
 
-        <TextInput keyboardType="numeric" onChangeText={(text) => setFirstName(text)} placeholder="First Name" style={{
-            borderBottomColor:"#ccc",
-            borderBottomWidth:1,
-        }}/> */}
-        <AppTextInput placeholder="Username" icon="email"/>
+    //     <TextInput keyboardType="numeric" onChangeText={(text) => setFirstName(text)} placeholder="First Name" style={{
+    //         borderBottomColor:"#ccc",
+    //         borderBottomWidth:1,
+    //     }}/>
+    // </Screen>
+//     <Screen>
+//     <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)}/>
+// </Screen>
+    <Screen>
+        <AppPicker icon="apps" placeholder="category"/>
+        <AppTextInput icon="email" placeholder="Email"/>
     </Screen>
 
     );
