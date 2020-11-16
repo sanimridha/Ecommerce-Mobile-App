@@ -17,7 +17,7 @@ const AppPicker = ({icon, items, placeholder, ...otherPros}) => {
         <View style={styles.container}>
            { icon && <MaterialCommunityIcons name={icon}size={25} style={styles.icons}/>}
             <AppText styles={styles.text}>{placeholder}</AppText>
-            <View >
+            <View style={{flex:1,flexDirection:"row-reverse"}}>
             <MaterialCommunityIcons name="chevron-down" size={25} />
             </View>
         </View>
