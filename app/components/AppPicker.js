@@ -9,14 +9,14 @@ import Screen from './Screen'
 import { TouchableWithoutFeedback } from 'react-native'
 import PickerItem from './PickerItem'
 
-const AppPicker = ({icon, items, placeholder, ...otherPros}) => {
+const AppPicker = ({icon, items, placeholder, selectedItem, onSelectItem, ...otherPros}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <React.Fragment>
         <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
            { icon && <MaterialCommunityIcons name={icon}size={25} style={styles.icons}/>}
-            <AppText styles={styles.text}>{placeholder}</AppText>
+            <AppText styles={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
             <View style={{flex:1,flexDirection:"row-reverse"}}>
             <MaterialCommunityIcons name="chevron-down" size={25} />
             </View>
@@ -29,7 +29,15 @@ const AppPicker = ({icon, items, placeholder, ...otherPros}) => {
                     data={items}
                     keyExtractor={item => item.value.toString()}
                     renderItem={({item}) =>
-                    <PickerItem label={item.label} onPress= {() => console.log(item)}/> }
+                    <PickerItem
+                        label={item.label}
+                        onPress= {() =>
+                            {
+                                setModalVisible(false);
+                                onSelectItem(item);
+                            }
+                        }
+                        /> }
 
                 />
             </Screen>

@@ -34,6 +34,7 @@ const categories = [
 export default function App() {
     // const [firstName, setFirstName] = useState("");
     // const [isNew, setIsNew] = useState(false);
+    const [category, setCategory] = useState(categories[0]);
     return(
     //    <View style={{
     //        flex:1,
@@ -107,7 +108,7 @@ export default function App() {
 //     <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)}/>
 // </Screen>
     <Screen>
-        <AppPicker items={categories} icon="apps" placeholder="category"/>
+        <AppPicker selectedItem={category} onSelectItem={item => setCategory(item)} items={categories} icon="apps" placeholder="category"/>
         <AppTextInput icon="email" placeholder="Email"/>
     </Screen>
 
