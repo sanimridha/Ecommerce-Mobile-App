@@ -7,6 +7,7 @@ import Screen from '../components/Screen'
 import {Formik} from 'formik'
 import * as Yup from 'yup'
 import AppText from '../components/AppText'
+import ErrorMessage from '../components/ErrorMessage'
 
 
 const validationSchema = Yup.object().shape({
@@ -37,7 +38,8 @@ const LoginScreen = () => {
                             placeholder="Email"
                             textContentType="emailAddress"
                         />
-                        <AppText style={{color:"red"}}>{errors.email}</AppText>
+                       <ErrorMessage error={errors.email}/>
+
                         <AppTextInput
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -47,7 +49,7 @@ const LoginScreen = () => {
                             textContentType="password"
                             secureTextEntry
                         />
-                        <AppText style={{color:"red"}}>{errors.password}</AppText>
+                        <ErrorMessage error={errors.password}/>
                         <AppButton title="Login" onPress={handleSubmit}/>
                     </React.Fragment>
                 }
