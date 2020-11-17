@@ -27,29 +27,31 @@ const LoginScreen = () => {
                 onSubmit={values => console.log(values)}
                 validationSchema = {validationSchema}
             >
-                {({handleChange, handleSubmit, errors}) =>
+                {({handleChange, handleSubmit, errors, setFieldTouched, touched}) =>
                     <React.Fragment>
                         <AppTextInput
                             autoCapitalize="none"
                             autoCorrect={false}
                             icon="email"
                             keyboardType="email-address"
+                            onBlur ={()=> setFieldTouched("email")}
                             onChangeText={handleChange("email")}
                             placeholder="Email"
                             textContentType="emailAddress"
                         />
-                       <ErrorMessage error={errors.email}/>
+                        {touched.email && <ErrorMessage error={errors.email}/>}
 
                         <AppTextInput
                             autoCapitalize="none"
                             autoCorrect={false}
                             icon="lock"
+                            onBlur ={()=> setFieldTouched("password")}
                             onChangeText={handleChange("password")}
                             placeholder="password"
                             textContentType="password"
                             secureTextEntry
                         />
-                        <ErrorMessage error={errors.password}/>
+                        {touched.password && <ErrorMessage error={errors.password}/>}
                         <AppButton title="Login" onPress={handleSubmit}/>
                     </React.Fragment>
                 }
