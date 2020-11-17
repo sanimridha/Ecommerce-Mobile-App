@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import AppButton from '../components/AppButton'
 import AppTextInput from '../components/AppTextInput'
 import Screen from '../components/Screen'
+
 import {Formik} from 'formik'
+
+
 const LoginScreen = () => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
     return (
         <Screen style={styles.container}>
             <Image
@@ -12,11 +17,11 @@ const LoginScreen = () => {
                 source={require('../assets/logo-red.png')}
             />
             <Formik
-                initialValues={{email:"", password:""}}
+                initialValues={{email:'', password:''}}
                 onSubmit={values => console.log(values)}
             >
-                {(handleChange, handleSubmit) => (
-                    <>
+                {({handleChange, handleSubmit}) =>
+                    <React.Fragment>
                         <AppTextInput
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -35,13 +40,9 @@ const LoginScreen = () => {
                             textContentType="password"
                             secureTextEntry
                         />
-                        <AppButton
-                            title="Login"
-                            onPress={() =>
-                                {handleSubmit}
-                            }/>
-                    </>
-                )}
+                        <AppButton title="Login" onPress={handleSubmit}/>
+                    </React.Fragment>
+                }
             </Formik>
 
         </Screen>
