@@ -17,20 +17,26 @@ import ListItemDeleteAction from "../components/ListItemDeleteAction";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam eu enim sit amet condimentum. Sed rutrum vulputate condimentum. Pellentesque venenatis, quam sit amet tincidunt pellentesque, tellus est fringilla ligula, eu tincidunt eros neque non eros. Integer lacus velit, viverra in blandit vel, ultrices egestas mi. Praesent euismod metus ligula, vel commodo enim varius vel. Ut non dolor tellus. Nullam ultrices egestas metus, eget commodo dolor sagittis et. Vivamus cursus mauris non sapien accumsan imperdiet. Donec consectetur lacus id ante scelerisque iaculis.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam eu enim sit amet condimentum. Sed rutrum vulputate condimentum. Pellentesque venenatis, quam sit amet tincidunt pellentesque, tellus est fringilla ligula, eu tincidunt eros neque non eros. Integer lacus velit, viverra in blandit vel, ultrices egestas mi. Praesent euismod metus ligula, vel commodo enim varius vel. Ut non dolor tellus. Nullam ultrices egestas metus, eget commodo dolor sagittis et. Vivamus cursus mauris non sapien accumsan imperdiet. Donec consectetur lacus id ante scelerisque iaculis.",
     image: require("../assets/Sani.jpg"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam eu enim sit amet condimentum. Sed rutrum vulputate condimentum. Pellentesque venenatis, quam sit amet tincidunt pellentesque, tellus est fringilla ligula, eu tincidunt eros neque non eros. Integer lacus velit, viverra in blandit vel, ultrices egestas mi. Praesent euismod metus ligula, vel commodo enim varius vel. Ut non dolor tellus. Nullam ultrices egestas metus, eget commodo dolor sagittis et. Vivamus cursus mauris non sapien accumsan imperdiet. Donec consectetur lacus id ante scelerisque iaculis.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam eu enim sit amet condimentum. Sed rutrum vulputate condimentum. Pellentesque venenatis, quam sit amet tincidunt pellentesque, tellus est fringilla ligula, eu tincidunt eros neque non eros. Integer lacus velit, viverra in blandit vel, ultrices egestas mi. Praesent euismod metus ligula, vel commodo enim varius vel. Ut non dolor tellus. Nullam ultrices egestas metus, eget commodo dolor sagittis et. Vivamus cursus mauris non sapien accumsan imperdiet. Donec consectetur lacus id ante scelerisque iaculis.",
     image: require("../assets/sani3.png"),
   },
   {
     id: 3,
-    title: "T3",
-    description: "D3",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam eu enim sit amet condimentum. Sed rutrum vulputate condimentum. Pellentesque venenatis, quam sit amet tincidunt pellentesque, tellus est fringilla ligula, eu tincidunt eros neque non eros. Integer lacus velit, viverra in blandit vel, ultrices egestas mi. Praesent euismod metus ligula, vel commodo enim varius vel. Ut non dolor tellus. Nullam ultrices egestas metus, eget commodo dolor sagittis et. Vivamus cursus mauris non sapien accumsan imperdiet. Donec consectetur lacus id ante scelerisque iaculis.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam eu enim sit amet condimentum. Sed rutrum vulputate condimentum. Pellentesque venenatis, quam sit amet tincidunt pellentesque, tellus est fringilla ligula, eu tincidunt eros neque non eros. Integer lacus velit, viverra in blandit vel, ultrices egestas mi. Praesent euismod metus ligula, vel commodo enim varius vel. Ut non dolor tellus. Nullam ultrices egestas metus, eget commodo dolor sagittis et. Vivamus cursus mauris non sapien accumsan imperdiet. Donec consectetur lacus id ante scelerisque iaculis.",
     image: require("../assets/sani3.png"),
   },
 ];
