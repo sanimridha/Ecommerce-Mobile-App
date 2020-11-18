@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import AppText from "../../components/AppText";
+import AppText from "../AppText";
 
 const ErrorMessage = ({ error }) => {
   if (!error) return null;
