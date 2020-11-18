@@ -12,6 +12,7 @@ const AppTextInput = ({ icon, ...otherPros }) => {
         <MaterialCommunityIcons name={icon} size={25} style={styles.icons} />
       )}
       <TextInput
+        placeholderTextColor={defaultStyles.colors.medium}
         style={[defaultStyles.text, styles.textInputStyle]}
         {...otherPros}
       />

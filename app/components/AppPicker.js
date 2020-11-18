@@ -38,9 +38,11 @@ const AppPicker = ({
               style={styles.icons}
             />
           )}
-          <AppText styles={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText styles={styles.text}>{(selectedItem, label)}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
           <View style={{ flex: 1, flexDirection: "row-reverse" }}>
             <MaterialCommunityIcons name="chevron-down" size={25} />
           </View>
@@ -79,6 +81,10 @@ const styles = StyleSheet.create({
   },
   icons: {
     marginRight: 10,
+  },
+  placeholder: {
+    color: defaultStyles.colors.medium,
+    flex: 1,
   },
   text: {
     flex: 1,
