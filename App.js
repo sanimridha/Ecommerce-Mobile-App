@@ -121,7 +121,7 @@ export default function App() {
     //     <AppTextInput icon="email" placeholder="Email"/>
     // </Screen>
     <Screen>
-      <MessagesScreen />
+      <ListingEditScreen />
     </Screen>
   );
 }

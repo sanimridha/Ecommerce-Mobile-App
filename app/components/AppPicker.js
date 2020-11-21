@@ -39,7 +39,7 @@ const AppPicker = ({
             />
           )}
           {selectedItem ? (
-            <AppText styles={styles.text}>{(selectedItem, label)}</AppText>
+            <AppText styles={styles.text}>{selectedItem.label}</AppText>
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
