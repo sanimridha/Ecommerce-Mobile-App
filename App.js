@@ -53,7 +53,7 @@ export default function App() {
 
   return (
     <Screen>
-      <AppButton title="Slect Image" onPress={selectImage} />
+      {/* <AppButton title="Slect Image" onPress={selectImage} />
       <Image
         source={{ uri: imageUri }}
         style={{
@@ -63,8 +63,8 @@ export default function App() {
           justifyContent: "center",
           alignItems: "center",
         }}
-      />
-      <ImageInput imageUri={imageUri} />
+      /> */}
+      <ImageInput imageUri={imageUri} onChangeImage={uri => setImageUri(uri)} />
     </Screen>
   );
 }
