@@ -30,26 +30,33 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
-  const requestPermissoin = async () => {
-    const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
-    if (!granted) alert("You need to enable permission to access the library");
+  const [imageUris, setImageUris] = useState([]);
+  const handleAdd = uri => {
+    setImageUris([...imageUris, uri]);
   };
-  useEffect(() => {
-    requestPermissoin();
-  }, []);
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("Error Reading an Image", error);
-    }
+  const handleRemove = uri => {
+    setImageUris(imageUris.filter(imageUri => imageUri != uri));
   };
+  // const requestPermissoin = async () => {
+  //   const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
+  //   if (!granted) alert("You need to enable permission to access the library");
+  // };
+  // useEffect(() => {
+  //   requestPermissoin();
+  // }, []);
+  // const selectImage = async () => {
+  //   try {
+  //     const result = await ImagePicker.launchImageLibraryAsync();
+  //     if (!result.cancelled) {
+  //       setImageUri(result.uri);
+  //     }
+  //   } catch (error) {
+  //     console.log("Error Reading an Image", error);
+  //   }
+  // };
 
   return (
     <Screen>
@@ -64,7 +71,11 @@ export default function App() {
           alignItems: "center",
         }}
       /> */}
-      <ImageInput imageUri={imageUri} onChangeImage={uri => setImageUri(uri)} />
+      <ImageInputList
+        imageUris={imageUris}
+        onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
+      />
     </Screen>
   );
 }
