@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   TextInput,
   Switch,
   Button,
+  Image,
 } from "react-native";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -26,102 +27,44 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 
-// const categories = [
-//     {
-//         label:"furniture",
-//         value:1,
-//     },
-//     {
-//         label:"Clothing",
-//         value:2,
-//     },
-//     {
-//         label:"Cameras",
-//         value:3,
-//     },
-// ]
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
+import ImageInput from "./app/components/ImageInput";
+
 export default function App() {
-  // const [firstName, setFirstName] = useState("");
-  // const [isNew, setIsNew] = useState(false);
-  // const [category, setCategory] = useState(categories[0]);
+  const [imageUri, setImageUri] = useState();
+  const requestPermissoin = async () => {
+    const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
+    if (!granted) alert("You need to enable permission to access the library");
+  };
+  useEffect(() => {
+    requestPermissoin();
+  }, []);
+  const selectImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if (!result.cancelled) {
+        setImageUri(result.uri);
+      }
+    } catch (error) {
+      console.log("Error Reading an Image", error);
+    }
+  };
+
   return (
-    //    <View style={{
-    //        flex:1,
-    //        justifyContent:"center",
-    //        alignItems:"center",
-    //         }}
-    //     >
-
-    //        {/* <Text style={{
-    //            fontSize:30,
-    //            fontFamily:"Roboto",
-    //             color:"orange",
-    //             textDecorationLine:"underline",
-    //             textAlign:"center",
-    //             lineHeight:60,
-
-    //        }}>
-    //             I Love React Native, here is some more texts,, here i'm writing some more..and more..
-    //        </Text> */}
-    //        <MaterialIcons name="email" size={200} color="dodgerblue" />
-    //        <AppText>Mail App</AppText>
-    //        <AppButton title="LogIn" onPress={()=> console.log("tapped!")}/>
-
-    //    </View>
-    //<WelcomeScreen/>
-    //Card Component
-    //     <View style={{
-    //          backgroundColor:"#f8f4f4",
-    //          padding:20,
-    //          paddingTop:80,
-
-    //     }}>
-    //          <Card
-    //                title="Red Jacket for Sale"
-    //                subTitle="$100"
-    //                image={require("./app/assets/jacket.jpg")}
-    //           />
-    //           <Card
-    //                title="Red Jacket for Sale"
-    //                subTitle="$100"
-    //                image={require("./app/assets/couch.jpg")}
-    //           />
-    //           <Card
-    //                title="Red Jacket for Sale"
-    //                subTitle="$100"
-    //                image={require("./app/assets/jacket.jpg")}
-    //           />
-    //           <Card
-    //                title="Red Jacket for Sale"
-    //                subTitle="$100"
-    //                image={require("./app/assets/couch.jpg")}
-    //           />
-    //     </View>
-    //<ListingDetailsScreen/>
-    //<MessagesScreen/>
-    //<ListingDetailsScreen/>
-    //<ViewImageScreen/>
-    // <Screen>
-    //    <AccountScreen/>
-    // </Screen>
-    // <ListingsScreen/>
-    // <Screen>
-    //     <Text>{firstName}</Text>
-
-    //     <TextInput keyboardType="numeric" onChangeText={(text) => setFirstName(text)} placeholder="First Name" style={{
-    //         borderBottomColor:"#ccc",
-    //         borderBottomWidth:1,
-    //     }}/>
-    // </Screen>
-    //     <Screen>
-    //     <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)}/>
-    // </Screen>
-    // <Screen>
-    //     <AppPicker selectedItem={category} onSelectItem={item => setCategory(item)} items={categories} icon="apps" placeholder="category"/>
-    //     <AppTextInput icon="email" placeholder="Email"/>
-    // </Screen>
     <Screen>
-      <ListingEditScreen />
+      <AppButton title="Slect Image" onPress={selectImage} />
+      <Image
+        source={{ uri: imageUri }}
+        style={{
+          width: "100%",
+          height: 500,
+          borderRadius: 100,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      />
+      <ImageInput imageUri={imageUri} />
     </Screen>
   );
 }
