@@ -8,6 +8,7 @@ const ImageInputList = ({ imageUris = [], onRemoveImage, onAddImage }) => {
   return (
     <View>
       <ScrollView
+        style={{}}
         ref={scrollView}
         horizontal={true}
         onContentSizeChange={() => {
