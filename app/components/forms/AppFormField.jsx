@@ -15,7 +15,8 @@ const AppFormField = ({ name, width, ...otherProps }) => {
         width={width}
         {...otherProps}
       />
-      {touched.email && <ErrorMessage error={errors[name]} />}
+      <ErrorMessage error={errors[name]} />
+      {/* {touched.name && <ErrorMessage error={errors[name]} />} */}
     </>
   );
 };

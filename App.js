@@ -31,15 +31,16 @@ import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
+import FormImagePicker from "./app/components/forms/FormImagePicker";
 
 export default function App() {
-  const [imageUris, setImageUris] = useState([]);
-  const handleAdd = uri => {
-    setImageUris([...imageUris, uri]);
-  };
-  const handleRemove = uri => {
-    setImageUris(imageUris.filter(imageUri => imageUri != uri));
-  };
+  // const [imageUris, setImageUris] = useState([]);
+  // const handleAdd = uri => {
+  //   setImageUris([...imageUris, uri]);
+  // };
+  // const handleRemove = uri => {
+  //   setImageUris(imageUris.filter(imageUri => imageUri != uri));
+  // };
   // const requestPermissoin = async () => {
   //   const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
   //   if (!granted) alert("You need to enable permission to access the library");
@@ -59,23 +60,24 @@ export default function App() {
   // };
 
   return (
-    <Screen>
-      {/* <AppButton title="Slect Image" onPress={selectImage} />
-      <Image
-        source={{ uri: imageUri }}
-        style={{
-          width: "100%",
-          height: 500,
-          borderRadius: 100,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      /> */}
-      <ImageInputList
-        imageUris={imageUris}
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-      />
-    </Screen>
+    // <Screen>
+    //   {/* <AppButton title="Slect Image" onPress={selectImage} />
+    //   <Image
+    //     source={{ uri: imageUri }}
+    //     style={{
+    //       width: "100%",
+    //       height: 500,
+    //       borderRadius: 100,
+    //       justifyContent: "center",
+    //       alignItems: "center",
+    //     }}
+    //   /> */}
+    //   {/* <ImageInputList
+    //     imageUris={imageUris}
+    //     onAddImage={handleAdd}
+    //     onRemoveImage={handleRemove}
+    //   /> */}
+    // </Screen>
+    <ListingEditScreen />
   );
 }
