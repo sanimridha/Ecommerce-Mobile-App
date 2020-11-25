@@ -17,12 +17,15 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import { TouchableWithoutFeedback } from "react-native";
 import PickerItem from "./PickerItem";
+import { AppFormPicker } from "./forms";
+import { AppFormField } from "./forms";
+import { TouchableOpacity } from "react-native";
 
 const AppPicker = ({
   icon,
   items,
   numberOfColumns = 1,
-  PickerItemComponent,
+  PickerItemComponent = PickerItem,
   placeholder,
   selectedItem,
   onSelectItem,
