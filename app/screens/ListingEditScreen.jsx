@@ -12,6 +12,7 @@ import {
 } from "../components/forms";
 import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
+import useLocation from "../Hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -79,16 +80,7 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-  const [location, setLocaiton] = useState();
-  const getLocation = async () => {
-    const { granted } = await Location.requestPermissionsAsync();
-    if (!granted) return;
-    const {
-      coords: { latitude, longitude },
-    } = await Location.getLastKnownPositionAsync();
-    setLocaiton({ latitude, longitude });
-  };
-  useEffect(() => {}, []);
+  const location = useLocation();
   return (
     <Screen style={styles.container}>
       <Form
