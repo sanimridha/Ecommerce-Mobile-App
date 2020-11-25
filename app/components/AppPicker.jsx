@@ -1,25 +1,12 @@
 import React, { useState } from "react";
-import {
-  Button,
-  FlatList,
-  Modal,
-  Platform,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, FlatList, Modal, StyleSheet, View } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import Screen from "./Screen";
 import { TouchableWithoutFeedback } from "react-native";
 import PickerItem from "./PickerItem";
-import { AppFormPicker } from "./forms";
-import { AppFormField } from "./forms";
-import { TouchableOpacity } from "react-native";
 
 const AppPicker = ({
   icon,
