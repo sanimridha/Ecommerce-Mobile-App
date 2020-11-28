@@ -12,7 +12,7 @@ import {
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import AppText from "./app/components/AppText";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppButton from "./app/components/AppButton";
 import Card from "./app/components/Card";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
@@ -33,52 +33,80 @@ import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
 import FormImagePicker from "./app/components/forms/FormImagePicker";
 
-export default function App() {
-  // const [imageUris, setImageUris] = useState([]);
-  // const handleAdd = uri => {
-  //   setImageUris([...imageUris, uri]);
-  // };
-  // const handleRemove = uri => {
-  //   setImageUris(imageUris.filter(imageUri => imageUri != uri));
-  // };
-  // const requestPermissoin = async () => {
-  //   const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
-  //   if (!granted) alert("You need to enable permission to access the library");
-  // };
-  // useEffect(() => {
-  //   requestPermissoin();
-  // }, []);
-  // const selectImage = async () => {
-  //   try {
-  //     const result = await ImagePicker.launchImageLibraryAsync();
-  //     if (!result.cancelled) {
-  //       setImageUri(result.uri);
-  //     }
-  //   } catch (error) {
-  //     console.log("Error Reading an Image", error);
-  //   }
-  // };
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+const Link = () => {
+  const navigation = useNavigation();
   return (
-    // <Screen>
-    //   {/* <AppButton title="Slect Image" onPress={selectImage} />
-    //   <Image
-    //     source={{ uri: imageUri }}
-    //     style={{
-    //       width: "100%",
-    //       height: 500,
-    //       borderRadius: 100,
-    //       justifyContent: "center",
-    //       alignItems: "center",
-    //     }}
-    //   /> */}
-    //   {/* <ImageInputList
-    //     imageUris={imageUris}
-    //     onAddImage={handleAdd}
-    //     onRemoveImage={handleRemove}
-    //   /> */}
-    // </Screen>
-    <ListingEditScreen />
-    //this section will be use for practice
+    <Button
+      title="Click"
+      onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
+    />
+  );
+};
+
+const Tweets = ({ navigation }) => (
+  <Screen>
+    <Text>Tweet</Text>
+    <Link />
+  </Screen>
+);
+const TweetDetails = ({ route }) => (
+  <Screen>
+    <Text>Tweet Details{route.params.id}</Text>
+  </Screen>
+);
+const Account = () => (
+  <Screen>
+    <Text>Account Screen</Text>
+  </Screen>
+);
+
+const Stack = createStackNavigator();
+const FeedNavigator = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerStyle: { backgroundColor: "dodgerblue" },
+      headerTintColor: "white",
+    }}
+  >
+    <Stack.Screen name="Tweets" component={Tweets} />
+    <Stack.Screen
+      name="TweetDetails"
+      component={TweetDetails}
+      options={({ route }) => ({ title: route.params.id })}
+    />
+  </Stack.Navigator>
+);
+const Tab = createBottomTabNavigator();
+const TabNavigator = () => (
+  <Tab.Navigator
+    tabBarOptions={{
+      activeBackgroundColor: "tomato",
+      activeTintColor: "#fff",
+      inactiveBackgroundColor: "#eee",
+      inactiveTintColor: "black",
+    }}
+  >
+    <Tab.Screen
+      name="Feed"
+      component={FeedNavigator}
+      options={{
+        tabBarIcon: ({ size, color }) => (
+          <MaterialCommunityIcons name="home" size={size} color={color} />
+        ),
+      }}
+    />
+    <Tab.Screen name="Account" component={Account} />
+  </Tab.Navigator>
+);
+export default function App() {
+  return (
+    <NavigationContainer>
+      {/* <StackNavigator /> */}
+      <TabNavigator />
+    </NavigationContainer>
   );
 }
