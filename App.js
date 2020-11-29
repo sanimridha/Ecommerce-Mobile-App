@@ -36,6 +36,7 @@ import FormImagePicker from "./app/components/forms/FormImagePicker";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import RegisterScreen from "./app/screens/RegisterScreeen";
 
 const Link = () => {
   const navigation = useNavigation();
