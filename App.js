@@ -39,6 +39,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import RegisterScreen from "./app/screens/RegisterScreeen";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -109,7 +110,7 @@ export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
       {/* <StackNavigator /> */}
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }
