@@ -37,6 +37,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import RegisterScreen from "./app/screens/RegisterScreeen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -107,7 +108,7 @@ export default function App() {
   return (
     <NavigationContainer>
       {/* <StackNavigator /> */}
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
