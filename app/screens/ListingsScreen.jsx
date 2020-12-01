@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
+import listingsApi from "../api/listings";
 
 const listing = [
   {
