@@ -1,38 +1,32 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
-import ListItem from "../components/ListItem";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, FlatList, Text, View } from "react-native";
 import Card from "../components/Card";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
-import listingsApi from "../api/listings";
+import listingApi from "../api/listings";
 
-const listing = [
-  {
-    id: 1,
-    title: "Red Jacket for sale",
-    price: 100,
-    image: require("../assets/jacket.jpg"),
-  },
-  {
-    id: 2,
-    title: "Couch in great Condition",
-    price: 1000,
-    image: require("../assets/couch.jpg"),
-  },
-];
 const ListingsScreen = ({ navigation }) => {
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    loadListings();
+  }, []);
+
+  const loadListings = async () => {
+    const response = await listingApi.getListings();
+    setListings(response.data);
+  };
   return (
     <Screen style={styles.screen}>
       <FlatList
-        data={listing}
+        data={listings}
         keyExtractor={listing => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
             title={item.title}
             subTitle={"$" + item.price}
-            image={item.image}
+            imageUrl={item.images[0].url}
             onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
           />
         )}
