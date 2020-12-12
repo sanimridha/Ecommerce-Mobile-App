@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, FlatList, Text, View } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import Card from "../components/Card";
 
 import Screen from "../components/Screen";
@@ -12,14 +18,19 @@ import AppButton from "../components/AppButton";
 const ListingsScreen = ({ navigation }) => {
   const [listings, setListings] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadListings();
   }, []);
 
   const loadListings = async () => {
+    setLoading(true);
     const response = await listingApi.getListings();
+    setLoading(false);
+
     if (!response.ok) return setError(true);
+
     setError(false);
     setListings(response.data);
   };
@@ -33,6 +44,7 @@ const ListingsScreen = ({ navigation }) => {
           </View>
         </>
       )}
+      <ActivityIndicator animating={true} size={"large"} color="#0000ff" />
       <FlatList
         data={listings}
         keyExtractor={listing => listing.id.toString()}
