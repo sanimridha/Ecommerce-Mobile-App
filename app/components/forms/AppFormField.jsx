@@ -23,7 +23,6 @@ const AppFormField = ({ name, width, ...otherProps }) => {
         {...otherProps}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
-      {/* {touched.name && <ErrorMessage error={errors[name]} />} */}
     </>
   );
 };

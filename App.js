@@ -40,6 +40,8 @@ import RegisterScreen from "./app/screens/RegisterScreeen";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
+import NetInfo from "@react-native-community/netinfo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -107,10 +109,30 @@ const TabNavigator = () => (
   </Tab.Navigator>
 );
 export default function App() {
+  //component did mount
+
+  // NetInfo.fetch().then(netInfo => console.log(netInfo));
+  // const unsubscribe = NetInfo.addEventListener(netInfo => console.log(netInfo));
+
+  //component Will UnMount
+  // unsubscribe();
+  ///////////////////////////////
+  const demo = async () => {
+    try {
+      await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
+      const value = await AsyncStorage.getItem("person");
+      const person = JSON.parse(value);
+      console.log(person);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  demo();
   return (
-    <NavigationContainer theme={navigationTheme}>
-      {/* <StackNavigator /> */}
-      <AppNavigator />
-    </NavigationContainer>
+    // <NavigationContainer theme={navigationTheme}>
+    //   {/* <StackNavigator /> */}
+    //   <AppNavigator />
+    // </NavigationContainer>
+    null
   );
 }
