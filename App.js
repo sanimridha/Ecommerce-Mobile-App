@@ -129,10 +129,10 @@ export default function App() {
   };
   demo();
   return (
-    // <NavigationContainer theme={navigationTheme}>
-    //   {/* <StackNavigator /> */}
-    //   <AppNavigator />
-    // </NavigationContainer>
-    null
+    <NavigationContainer theme={navigationTheme}>
+      {/* <StackNavigator /> */}
+      <AppNavigator />
+    </NavigationContainer>
+    // null
   );
 }
