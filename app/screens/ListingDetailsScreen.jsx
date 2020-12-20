@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 import ListItem from "../components/ListItem";
-
+import {} from "react-native-expo-image-cache";
 const ListingDetailsScreen = ({ route }) => {
   const listing = route.params;
 
