@@ -132,7 +132,8 @@ export default function App() {
   return (
     <>
       <NavigationContainer theme={navigationTheme}>
-        <AppNavigator />
+        {/* <AppNavigator /> */}
+        <AuthNavigator />
       </NavigationContainer>
       <OfflineNotice />
     </>

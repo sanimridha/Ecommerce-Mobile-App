@@ -30,7 +30,7 @@ const LoginScreen = () => {
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <AppForm
         initialValues={{ email: "", password: "" }}
-        onSubmit={values => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <ErrorMessage error="Invalid email or password" visible={loginFailed} />
