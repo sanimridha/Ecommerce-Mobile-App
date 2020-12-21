@@ -42,72 +42,73 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import NetInfo from "@react-native-community/netinfo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import OfflineNotice from "./app/components/OfflineNotice";
 
-const Link = () => {
-  const navigation = useNavigation();
-  return (
-    <Button
-      title="Click"
-      onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
-    />
-  );
-};
+// const Link = () => {
+//   const navigation = useNavigation();
+//   return (
+//     <Button
+//       title="Click"
+//       onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
+//     />
+//   );
+// };
 
-const Tweets = ({ navigation }) => (
-  <Screen>
-    <Text>Tweet</Text>
-    <Link />
-  </Screen>
-);
-const TweetDetails = ({ route }) => (
-  <Screen>
-    <Text>Tweet Details{route.params.id}</Text>
-  </Screen>
-);
-const Account = () => (
-  <Screen>
-    <Text>Account Screen</Text>
-  </Screen>
-);
+// const Tweets = ({ navigation }) => (
+//   <Screen>
+//     <Text>Tweet</Text>
+//     <Link />
+//   </Screen>
+// );
+// const TweetDetails = ({ route }) => (
+//   <Screen>
+//     <Text>Tweet Details{route.params.id}</Text>
+//   </Screen>
+// );
+// const Account = () => (
+//   <Screen>
+//     <Text>Account Screen</Text>
+//   </Screen>
+// );
 
-const Stack = createStackNavigator();
-const FeedNavigator = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: "dodgerblue" },
-      headerTintColor: "white",
-    }}
-  >
-    <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen
-      name="TweetDetails"
-      component={TweetDetails}
-      options={({ route }) => ({ title: route.params.id })}
-    />
-  </Stack.Navigator>
-);
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions={{
-      activeBackgroundColor: "tomato",
-      activeTintColor: "#fff",
-      inactiveBackgroundColor: "#eee",
-      inactiveTintColor: "black",
-    }}
-  >
-    <Tab.Screen
-      name="Feed"
-      component={FeedNavigator}
-      options={{
-        tabBarIcon: ({ size, color }) => (
-          <MaterialCommunityIcons name="home" size={size} color={color} />
-        ),
-      }}
-    />
-    <Tab.Screen name="Account" component={Account} />
-  </Tab.Navigator>
-);
+// const Stack = createStackNavigator();
+// const FeedNavigator = () => (
+//   <Stack.Navigator
+//     screenOptions={{
+//       headerStyle: { backgroundColor: "dodgerblue" },
+//       headerTintColor: "white",
+//     }}
+//   >
+//     <Stack.Screen name="Tweets" component={Tweets} />
+//     <Stack.Screen
+//       name="TweetDetails"
+//       component={TweetDetails}
+//       options={({ route }) => ({ title: route.params.id })}
+//     />
+//   </Stack.Navigator>
+// );
+// const Tab = createBottomTabNavigator();
+// const TabNavigator = () => (
+//   <Tab.Navigator
+//     tabBarOptions={{
+//       activeBackgroundColor: "tomato",
+//       activeTintColor: "#fff",
+//       inactiveBackgroundColor: "#eee",
+//       inactiveTintColor: "black",
+//     }}
+//   >
+//     <Tab.Screen
+//       name="Feed"
+//       component={FeedNavigator}
+//       options={{
+//         tabBarIcon: ({ size, color }) => (
+//           <MaterialCommunityIcons name="home" size={size} color={color} />
+//         ),
+//       }}
+//     />
+//     <Tab.Screen name="Account" component={Account} />
+//   </Tab.Navigator>
+// );
 export default function App() {
   //component did mount
 
@@ -117,22 +118,23 @@ export default function App() {
   //component Will UnMount
   // unsubscribe();
   ///////////////////////////////
-  const demo = async () => {
-    try {
-      await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
-      const value = await AsyncStorage.getItem("person");
-      const person = JSON.parse(value);
-      console.log(person);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  demo();
+  // const demo = async () => {
+  //   try {
+  //     await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
+  //     const value = await AsyncStorage.getItem("person");
+  //     const person = JSON.parse(value);
+  //     console.log(person);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // demo();
   return (
-    <NavigationContainer theme={navigationTheme}>
-      {/* <StackNavigator /> */}
-      <AppNavigator />
-    </NavigationContainer>
-    // null
+    <>
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+      <OfflineNotice />
+    </>
   );
 }
