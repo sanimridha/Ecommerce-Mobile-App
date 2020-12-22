@@ -43,6 +43,7 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import NetInfo from "@react-native-community/netinfo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AuthContext from "./app/auth/context";
 
 // const Link = () => {
 //   const navigation = useNavigation();
@@ -112,12 +113,12 @@ import OfflineNotice from "./app/components/OfflineNotice";
 export default function App() {
   const [user, setUser] = useState();
   return (
-    <>
+    <AuthContext.Provider value={{ user, setUser }}>
       <NavigationContainer theme={navigationTheme}>
         {/* <AppNavigator /> */}
-        <AuthNavigator />
+        {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
       <OfflineNotice />
-    </>
+    </AuthContext.Provider>
   );
 }
