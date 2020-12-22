@@ -110,25 +110,7 @@ import OfflineNotice from "./app/components/OfflineNotice";
 //   </Tab.Navigator>
 // );
 export default function App() {
-  //component did mount
-
-  // NetInfo.fetch().then(netInfo => console.log(netInfo));
-  // const unsubscribe = NetInfo.addEventListener(netInfo => console.log(netInfo));
-
-  //component Will UnMount
-  // unsubscribe();
-  ///////////////////////////////
-  // const demo = async () => {
-  //   try {
-  //     await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
-  //     const value = await AsyncStorage.getItem("person");
-  //     const person = JSON.parse(value);
-  //     console.log(person);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // demo();
+  const [user, setUser] = useState();
   return (
     <>
       <NavigationContainer theme={navigationTheme}>
