@@ -1,4 +1,6 @@
 import * as SecureStore from "expo-secure-store";
+import jwtDecode from "jwt-decode";
+import { TimePickerAndroid } from "react-native";
 
 const key = "authToken";
 
@@ -17,6 +19,10 @@ const getToken = async () => {
     console.log("Error getting the auth token", error);
   }
 };
+const getUser = async () => {
+  const token = await getToken();
+  return token ? jwtDecode(token) : null;
+};
 
 const removeToken = async () => {
   try {
@@ -26,7 +32,7 @@ const removeToken = async () => {
   }
 };
 export default {
-  getToken,
+  getUser,
   removeToken,
   storeToken,
 };
