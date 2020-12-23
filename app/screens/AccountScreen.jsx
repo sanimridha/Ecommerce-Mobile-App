@@ -8,6 +8,7 @@ import ListItemSeparetor from "../components/ListItemSeparetor";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import authStorage from "../auth/storage";
+import useAuth from "../auth/useAuth";
 
 const menuItems = [
   {
@@ -28,7 +29,7 @@ const menuItems = [
 ];
 
 const AccountScreen = ({ navigation }) => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser } = useAuth();
 
   const handleLogOut = () => {
     setUser(null);
