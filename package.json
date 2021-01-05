@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "push": "git push origin master && git push sanimridha master"
+    "push": "git push origin master && git push zakirsoft master"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
