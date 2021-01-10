@@ -9,6 +9,7 @@ import useAuth from "../auth/useAuth";
 import authApi from "../api/auth";
 import useApi from "../Hooks/useApi";
 import ActivityIndicator from "../components/ActivityIndicator";
+import ErrorMessage from "../components/forms/ErrorMessage";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -42,39 +43,43 @@ function RegisterScreen() {
   };
 
   return (
-    <Screen style={styles.container}>
-      <AppForm
-        initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={values => console.log(values)}
-        validationSchema={validationSchema}
-      >
-        <AppFormField
-          autoCorrect={false}
-          icon="account"
-          name="name"
-          placeholder="Name"
-        />
-        <AppFormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="email"
-          keyboardType="email-address"
-          name="email"
-          placeholder="Email"
-          textContentType="emailAddress"
-        />
-        <AppFormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="lock"
-          name="password"
-          placeholder="Password"
-          secureTextEntry
-          textContentType="password"
-        />
-        <SubmitButton title="Register" />
-      </AppForm>
-    </Screen>
+    <>
+      <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
+      <Screen style={styles.container}>
+        <AppForm
+          initialValues={{ name: "", email: "", password: "" }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <ErrorMessage error={error} visible={error} />
+          <AppFormField
+            autoCorrect={false}
+            icon="account"
+            name="name"
+            placeholder="Name"
+          />
+          <AppFormField
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="email"
+            keyboardType="email-address"
+            name="email"
+            placeholder="Email"
+            textContentType="emailAddress"
+          />
+          <AppFormField
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="lock"
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+            textContentType="password"
+          />
+          <SubmitButton title="Register" />
+        </AppForm>
+      </Screen>
+    </>
   );
 }
 
