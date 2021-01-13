@@ -2,6 +2,7 @@ import React from "react";
 import React, { Alert, Keyboard } from "react-native";
 import * as Notificationss from "expo-notifications";
 import { Notifications } from "expo";
+import * as Yup from "yup";
 import { AppForm, AppFormField, SubmitButton } from "./forms";
 import messagesApi from "../api/messages";
 
@@ -40,5 +41,7 @@ function ContactSellerForm({ listing }) {
     </AppForm>
   );
 }
-
+const validationSchema = Yup.object().shape({
+  message: Yup.string().required().min(1).label("Message"),
+});
 export default ContactSellerForm;
