@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import * as Notificationss from "expo-notifications";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
